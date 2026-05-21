@@ -24,11 +24,11 @@ export const metadata: Metadata = {
     "PRACPROS is a dental marketing agency specializing in AI-native patient acquisition systems, Google Premier Partner advertising, conversion-optimized websites, local SEO, and speed-to-lead automation.",
   icons: {
     icon: [
-      { url: "/icon.png", type: "image/png" },
-      { url: "/brand/pracpros-logo.png", type: "image/png" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
-    apple: "/brand/pracpros-logo.png",
-    shortcut: "/icon.png",
+    apple: "/icon.svg",
+    shortcut: "/icon.svg",
   },
   openGraph: {
     title: "PracPros — AI-Native Dental Growth Platform",
@@ -37,14 +37,14 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://www.pracpros.com",
     siteName: "PracPros",
-    images: [{ url: "/brand/pracpros-logo.png", width: 357, height: 135, alt: "PracPros" }],
+    images: [{ url: "/brand/pracpros-logo-v2.png", width: 1091, height: 229, alt: "PracPros Dental Marketing" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "PracPros — AI-Native Dental Growth Platform",
     description:
       "Google Premier Partner. AI-native patient acquisition for dental practices serious about growth.",
-    images: ["/brand/pracpros-logo.png"],
+    images: ["/brand/pracpros-logo-v2.png"],
   },
 };
 
