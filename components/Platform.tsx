@@ -66,15 +66,15 @@ function PlatformVisual() {
   ];
 
   return (
-    <div className="relative mx-auto w-full max-w-[820px]">
+    <div className="relative mx-auto w-full max-w-[980px]">
       <div className="relative aspect-[5/5.6] w-full">
-        {/* Outer glow */}
+        {/* Outer glow — animated */}
         <div
           aria-hidden
-          className="absolute -inset-4 rounded-[48px] blur-3xl opacity-70"
+          className="absolute -inset-6 rounded-[56px] blur-3xl opacity-70 animate-glow-pulse"
           style={{
             background:
-              "radial-gradient(60% 60% at 50% 50%, rgba(67,69,75,0.45), transparent 70%)",
+              "radial-gradient(60% 60% at 50% 50%, rgba(255,82,28,0.35), transparent 70%)",
           }}
         />
 
@@ -143,18 +143,18 @@ function PlatformVisual() {
           </g>
         </svg>
 
-        {/* Central dashboard card */}
-        <div className="absolute left-1/2 top-1/2 w-[58%] -translate-x-1/2 -translate-y-1/2">
-          <div className="overflow-hidden rounded-[20px] border border-border bg-white shadow-[0_40px_80px_-30px_rgba(10,10,10,0.4)]">
+        {/* Central dashboard card — bigger */}
+        <div className="absolute left-1/2 top-1/2 w-[64%] -translate-x-1/2 -translate-y-1/2 animate-kpi-rise">
+          <div className="overflow-hidden rounded-[24px] border border-border bg-white shadow-[0_50px_110px_-30px_rgba(67,69,75,0.5)]">
             {/* Header bar */}
-            <div className="flex items-center justify-between border-b border-border bg-subtle/60 px-4 py-3">
-              <div className="flex items-center gap-1.5">
-                <span className="h-2 w-2 rounded-full bg-brand-400" />
-                <span className="h-2 w-2 rounded-full bg-brand-300" />
-                <span className="h-2 w-2 rounded-full bg-brand-400" />
+            <div className="flex items-center justify-between border-b border-border bg-subtle/60 px-5 py-3.5">
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-brand-400" />
+                <span className="h-2.5 w-2.5 rounded-full bg-brand-300" />
+                <span className="h-2.5 w-2.5 rounded-full bg-brand-400" />
               </div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink shadow-card">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-500 animate-pulse" />
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-ink shadow-card">
+                <span className="h-2 w-2 rounded-full bg-brand-500 animate-pulse" />
                 Live · PracPros IQ
               </span>
             </div>
@@ -165,7 +165,7 @@ function PlatformVisual() {
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1100&q=85"
                 alt="Connected growth dashboard"
                 fill
-                sizes="(min-width: 1024px) 480px, 60vw"
+                sizes="(min-width: 1024px) 560px, 60vw"
                 className="object-cover"
                 unoptimized
               />
@@ -177,42 +177,43 @@ function PlatformVisual() {
                     "linear-gradient(180deg, rgba(255,255,255,0) 30%, rgba(10,10,10,0.7) 100%)",
                 }}
               />
-              <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
+              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                 <div>
-                  <div className="text-[10.5px] font-semibold uppercase tracking-[0.14em] text-white/85">
+                  <div className="text-[12px] font-semibold uppercase tracking-[0.14em] text-white/85">
                     Pipeline · this month
                   </div>
-                  <div className="mt-0.5 font-display text-[28px] font-semibold leading-none tracking-tight text-white">
+                  <div className="mt-1 font-display text-[40px] font-semibold leading-none tracking-tight text-white">
                     +38%
                   </div>
                 </div>
-                <span className="rounded-full bg-brand-500/95 px-2 py-0.5 text-[10.5px] font-semibold text-white">
+                <span className="rounded-full bg-brand-500/95 px-3 py-1 text-[12px] font-semibold text-white">
                   ▲ on target
                 </span>
               </div>
             </div>
 
-            {/* Mini-rows */}
-            <div className="space-y-2 p-3">
+            {/* Mini-rows — bigger */}
+            <div className="space-y-2.5 p-4">
               {[
-                { label: "New patients", value: "126", pct: 78 },
-                { label: "Booked from web", value: "84%", pct: 92 },
-                { label: "Avg response time", value: "47s", pct: 96 },
+                { label: "New patients", value: "126", pct: 78, delay: "0.1s" },
+                { label: "Booked from web", value: "84%", pct: 92, delay: "0.25s" },
+                { label: "Avg response time", value: "47s", pct: 96, delay: "0.4s" },
               ].map((r) => (
                 <div
                   key={r.label}
-                  className="flex items-center gap-3 rounded-lg border border-border bg-subtle/50 px-3 py-2"
+                  className="flex items-center gap-3 rounded-xl border border-border bg-subtle/50 px-4 py-2.5 animate-feed-in"
+                  style={{ animationDelay: r.delay }}
                 >
-                  <span className="flex-1 truncate text-[12px] font-medium text-ink">
+                  <span className="flex-1 truncate text-[14px] font-medium text-ink">
                     {r.label}
                   </span>
-                  <div className="h-1.5 w-20 overflow-hidden rounded-full bg-ink/10">
+                  <div className="h-2 w-28 overflow-hidden rounded-full bg-ink/10">
                     <div
-                      className="h-full rounded-full bg-brand-500"
-                      style={{ width: `${r.pct}%` }}
+                      className="h-full origin-left rounded-full bg-brand-500 animate-bar-fill"
+                      style={{ width: `${r.pct}%`, animationDelay: r.delay }}
                     />
                   </div>
-                  <span className="w-12 text-right text-[12px] font-semibold tabular-nums text-ink">
+                  <span className="w-12 text-right text-[14px] font-semibold tabular-nums text-ink">
                     {r.value}
                   </span>
                 </div>
@@ -222,18 +223,18 @@ function PlatformVisual() {
 
           {/* Central node dot below the card */}
           <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="relative h-3 w-3">
+            <div className="relative h-4 w-4">
               <span className="absolute inset-0 rounded-full bg-brand-500" />
-              <span className="absolute -inset-2 rounded-full bg-brand-500/30 animate-ping" />
+              <span className="absolute -inset-3 rounded-full bg-brand-500/30 animate-ping" />
             </div>
           </div>
         </div>
 
-        {/* Floating node chips */}
+        {/* Floating node chips — bigger, staggered fade-in */}
         {nodes.map((n, i) => (
           <div
             key={n.label}
-            className={`absolute z-10 inline-flex items-center gap-2.5 rounded-2xl border border-border bg-white py-2 pl-2 pr-3.5 shadow-card animate-float-soft ${
+            className={`absolute z-10 inline-flex items-center gap-3 rounded-2xl border border-border bg-white py-2.5 pl-2.5 pr-5 shadow-card animate-float-soft ${
               n.side === "left" ? "left-0" : "right-0"
             }`}
             style={{
@@ -243,13 +244,13 @@ function PlatformVisual() {
             }}
           >
             <span
-              className={`grid h-7 w-7 shrink-0 place-items-center rounded-lg ${n.iconBg} text-ink/80`}
+              className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${n.iconBg} text-ink/80`}
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
+              <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden>
                 {n.icon}
               </svg>
             </span>
-            <span className="text-[12.5px] font-semibold tracking-tight text-ink whitespace-nowrap">
+            <span className="text-[15px] font-semibold tracking-tight text-ink whitespace-nowrap">
               {n.label}
             </span>
           </div>
@@ -282,13 +283,13 @@ export function Platform() {
       />
 
       <div className="container-page relative">
-        <div className="grid gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:items-center">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20 lg:items-center">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 text-[12px] font-medium uppercase tracking-[0.14em] text-ink-soft backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-border bg-white/80 px-4 py-2 text-[13px] font-medium uppercase tracking-[0.14em] text-ink-soft backdrop-blur shadow-card">
+              <span className="h-2 w-2 rounded-full bg-brand-500" aria-hidden />
               The PracPros Platform
             </span>
-            <h2 className="mt-5 font-display text-4xl md:text-5xl lg:text-[64px] leading-[1.04] font-semibold tracking-[-0.028em] text-ink">
+            <h2 className="mt-6 font-display text-4xl md:text-5xl lg:text-[64px] leading-[1.04] font-semibold tracking-[-0.028em] text-ink">
               You Have Marketing.
               <span className="block">
                 What You Don&rsquo;t Have Is a{" "}
@@ -304,7 +305,7 @@ export function Platform() {
               </span>
             </h2>
 
-            <div className="mt-6 space-y-5 text-[16.5px] leading-[1.65] text-ink-soft">
+            <div className="mt-7 space-y-5 text-[18px] leading-[1.65] text-ink-soft">
               <p>
                 Most dental practices are failing because their marketing is
                 fragmented. A website, maybe some SEO, Google Ads, a social
@@ -334,18 +335,18 @@ export function Platform() {
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-9 flex flex-wrap gap-3">
               <Button
                 href="#growth-audit"
                 variant="primary"
-                size="md"
+                size="lg"
                 trailingIcon
               >
                 Get a Free Growth Audit
               </Button>
               <Button
                 href="#platform"
-                size="md"
+                size="lg"
                 variant="secondary"
               >
                 Explore the platform

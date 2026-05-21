@@ -136,116 +136,134 @@ export function Automation() {
           </div>
         </Reveal>
 
-        {/* Modern command + sync grid */}
-        <Reveal delay={120} className="relative mx-auto mt-14 max-w-[1100px]">
+        {/* Modern command + sync grid — bigger + animated */}
+        <Reveal delay={120} className="relative mx-auto mt-16 max-w-[1200px]">
+          {/* warm halo behind the card */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -inset-8 rounded-[56px] blur-3xl opacity-50 animate-glow-pulse"
+            style={{
+              background:
+                "radial-gradient(50% 60% at 50% 50%, rgba(255,82,28,0.25), transparent 70%)",
+            }}
+          />
+
           {/* Command bar */}
-          <div className="relative overflow-hidden rounded-2xl border border-border bg-white shadow-card">
-            <div className="flex flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-              <div className="flex items-center gap-3">
-                <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border-2 border-white shadow-card">
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-white shadow-[0_60px_120px_-30px_rgba(67,69,75,0.3)] transition-transform duration-500 hover:-translate-y-1">
+            <div className="flex flex-col gap-5 px-6 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-7">
+              <div className="flex items-center gap-4 animate-feed-in">
+                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-[3px] border-white shadow-card">
                   <Image
-                    src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=200&q=80"
+                    src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=300&q=80"
                     alt="Jen, office manager"
                     fill
-                    sizes="44px"
+                    sizes="64px"
                     className="object-cover"
                     unoptimized
                   />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-muted">
+                  <div className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted">
                     Jen · Office manager
                   </div>
-                  <div className="truncate font-display text-[15px] font-semibold tracking-tight text-ink">
+                  <div className="font-display text-[20px] sm:text-[22px] font-semibold tracking-tight text-ink">
                     &ldquo;Changed our Thu &amp; Fri hours.&rdquo;
-                    <span className="ml-2 font-mono text-[12px] font-normal text-muted">
+                    <span className="ml-3 font-mono text-[15px] font-normal text-muted">
                       9:00 → 19:00
                     </span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 text-[11.5px] font-semibold text-brand-700">
-                  <span className="h-1.5 w-1.5 rounded-full bg-brand-500 animate-pulse" />
+              <div className="flex items-center gap-3 animate-chip-pop" style={{ animationDelay: "0.2s" }}>
+                <span className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-4 py-2 text-[14px] font-semibold text-brand-700">
+                  <span className="h-2 w-2 rounded-full bg-brand-500 animate-pulse" />
                   Updated everywhere
                 </span>
-                <span className="hidden sm:inline-flex items-center gap-1 rounded-full border border-border px-2.5 py-1 text-[11px] text-ink-soft">
+                <span className="hidden sm:inline-flex items-center gap-1 rounded-full border border-border px-3 py-1.5 text-[13px] text-ink-soft">
                   in under a second
                 </span>
               </div>
             </div>
 
-            {/* progress bar */}
-            <div className="relative h-px w-full bg-border">
-              <div className="absolute inset-y-0 left-0 w-full origin-left bg-gradient-to-r from-brand-500 via-brand-400 to-brand-200" />
+            {/* progress bar — shimmer-animated */}
+            <div className="relative h-1 w-full bg-border">
+              <div
+                className="absolute inset-y-0 left-0 w-full origin-left animate-sync-shimmer"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, rgba(255,82,28,1) 0%, rgba(255,113,66,1) 40%, rgba(255,145,106,1) 60%, rgba(255,82,28,1) 100%)",
+                }}
+              />
             </div>
 
-            {/* Sync grid */}
+            {/* Sync grid — bigger rows, staggered animation */}
             <ul className="grid grid-cols-1 divide-y divide-border sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-3">
               {syncs.map((s, i) => (
                 <li
                   key={s.label}
-                  className="group relative flex items-center gap-3 p-4 transition-colors sm:p-5"
+                  className="group relative flex items-center gap-4 p-6 transition-colors sm:p-7 animate-feed-in"
                   style={{
                     borderTop:
                       i >= 3 ? "1px solid var(--color-border)" : undefined,
+                    animationDelay: `${0.25 + i * 0.12}s`,
                   }}
                 >
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-border bg-subtle text-ink transition-colors group-hover:border-brand-300 group-hover:bg-brand-50 group-hover:text-brand-700">
-                    {s.icon}
+                  <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-border bg-subtle text-ink transition-all duration-300 group-hover:scale-110 group-hover:border-brand-300 group-hover:bg-brand-50 group-hover:text-brand-700">
+                    <span className="scale-[1.4]">{s.icon}</span>
                   </span>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="truncate font-display text-[14.5px] font-semibold tracking-tight text-ink">
+                      <span className="truncate font-display text-[17px] font-semibold tracking-tight text-ink">
                         {s.label}
                       </span>
-                      <span className="ml-auto font-mono text-[10.5px] font-medium text-muted">
+                      <span className="ml-auto font-mono text-[12px] font-medium text-muted">
                         {s.latency}
                       </span>
                     </div>
-                    <div className="mt-1 flex items-center gap-2">
-                      <span className="truncate text-[12px] text-ink-soft">
+                    <div className="mt-1.5 flex items-center gap-2">
+                      <span className="truncate text-[14px] text-ink-soft">
                         {s.meta}
                       </span>
                     </div>
                   </div>
-                  <span className="ml-1 inline-flex items-center gap-1 text-[10.5px] font-semibold text-brand-700">
-                    <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+                  <span className="ml-1 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-brand-700">
+                    <span className="h-2 w-2 rounded-full bg-brand-500 animate-pulse" />
                     Synced
                   </span>
                 </li>
               ))}
             </ul>
 
-            {/* footer bar — humanized */}
-            <div className="flex flex-col items-start gap-3 border-t border-border bg-subtle/40 px-5 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-              <div className="flex items-center gap-2 text-[12px] text-ink-soft">
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-500 animate-pulse" />
+            {/* footer bar — humanized, slightly bigger */}
+            <div className="flex flex-col items-start gap-3 border-t border-border bg-subtle/40 px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+              <div className="flex items-center gap-2.5 text-[14px] text-ink-soft">
+                <span className="h-2 w-2 rounded-full bg-brand-500 animate-pulse" />
                 <span className="font-medium text-ink">Jen got her Thursday back.</span>
                 <span className="text-muted">No 6-tab afternoon.</span>
               </div>
-              <div className="flex items-center gap-2 text-[12px] text-muted">
+              <div className="flex items-center gap-2 text-[14px] text-muted">
                 <span>That&rsquo;s what consistency feels like.</span>
               </div>
             </div>
           </div>
 
-          {/* tiny meta callouts under the card */}
-          <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          {/* meta callouts under the card — bigger, animated */}
+          <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-3">
             {[
-              { k: "Time saved / week", v: "6.4 hrs" },
-              { k: "Manual touches removed", v: "38" },
-              { k: "Sync error rate", v: "0.01%" },
+              { k: "Time saved / week", v: "6.4 hrs", delay: "0.4s" },
+              { k: "Manual touches removed", v: "38", delay: "0.55s" },
+              { k: "Sync error rate", v: "0.01%", delay: "0.7s" },
             ].map((m) => (
               <div
                 key={m.k}
-                className="rounded-xl border border-border bg-white/70 px-4 py-3 backdrop-blur"
+                className="rounded-2xl border border-border bg-white/80 px-5 py-5 backdrop-blur transition-transform duration-300 hover:-translate-y-0.5 animate-kpi-rise"
+                style={{ animationDelay: m.delay }}
               >
-                <div className="font-mono text-[10.5px] font-semibold uppercase tracking-[0.14em] text-muted">
+                <div className="font-mono text-[12px] font-semibold uppercase tracking-[0.14em] text-muted">
                   {m.k}
                 </div>
-                <div className="mt-1 font-display text-[20px] font-semibold tracking-[-0.02em] text-ink">
+                <div className="mt-2 font-display text-[28px] sm:text-[32px] font-semibold tracking-[-0.02em] text-ink">
                   {m.v}
                 </div>
               </div>

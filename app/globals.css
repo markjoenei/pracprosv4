@@ -151,6 +151,36 @@ body {
   100% { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50%      { opacity: 0.75; transform: scale(1.04); }
+}
+
+@keyframes kpi-rise {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bar-fill {
+  0%   { transform: scaleX(0); opacity: 0.4; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+
+@keyframes feed-in {
+  0%   { opacity: 0; transform: translateX(-10px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes chip-pop {
+  0%   { opacity: 0; transform: translateY(8px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes sync-shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
 .animate-float-soft     { animation: float-soft 6s ease-in-out infinite; }
 .animate-marquee        { animation: marquee 38s linear infinite; }
 .animate-fade-up        { animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
@@ -162,6 +192,15 @@ body {
 .animate-scene-in-left  { animation: scene-in-left 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .animate-scene-in-right { animation: scene-in-right 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .animate-scene-in-up    { animation: scene-in-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.animate-glow-pulse     { animation: glow-pulse 5s ease-in-out infinite; }
+.animate-kpi-rise       { animation: kpi-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.animate-bar-fill       { animation: bar-fill 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.animate-feed-in        { animation: feed-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.animate-chip-pop       { animation: chip-pop 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.animate-sync-shimmer   {
+  background-size: 200% 100%;
+  animation: sync-shimmer 3.5s linear infinite;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .animate-float-soft,
@@ -174,7 +213,13 @@ body {
   .animate-scene-in,
   .animate-scene-in-left,
   .animate-scene-in-right,
-  .animate-scene-in-up {
+  .animate-scene-in-up,
+  .animate-glow-pulse,
+  .animate-kpi-rise,
+  .animate-bar-fill,
+  .animate-feed-in,
+  .animate-chip-pop,
+  .animate-sync-shimmer {
     animation: none !important;
   }
   html { scroll-behavior: auto; }
