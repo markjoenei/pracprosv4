@@ -16,6 +16,10 @@ type Capability = {
   metrics: { label: string; value: string; emphasized?: boolean }[];
   agentMessage: string;
   sparkline: number[];
+  image: string;
+  imageAlt: string;
+  imagePosition?: string;
+  quote: { text: string; author: string; role: string };
 };
 
 const personas: Capability[] = [
@@ -47,6 +51,15 @@ const personas: Capability[] = [
     agentMessage:
       "Found 4 new keywords this market is searching for — pulling up your draft.",
     sparkline: [12, 18, 22, 28, 32, 30, 38, 42, 48, 55, 62, 68],
+    image:
+      "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Modern dental practice with new patients arriving",
+    imagePosition: "center 35%",
+    quote: {
+      text: "We went from invisible to the #1 dentist in our zip code in six months.",
+      author: "Dr. Patel",
+      role: "Riverbend Dental Group",
+    },
   },
   {
     id: "speed-to-lead",
@@ -75,6 +88,15 @@ const personas: Capability[] = [
     agentMessage:
       "23 inquiries came in overnight — 19 booked themselves before you opened.",
     sparkline: [80, 75, 70, 60, 55, 50, 48, 47, 47, 46, 47, 47],
+    image:
+      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Patient receiving a same-day reply from the practice",
+    imagePosition: "center 28%",
+    quote: {
+      text: "Patients are booking themselves at 11pm. We just confirm in the morning.",
+      author: "Dr. Lee",
+      role: "Brighthill Family Dental",
+    },
   },
   {
     id: "conversion",
@@ -103,6 +125,15 @@ const personas: Capability[] = [
     agentMessage:
       "Ran an A/B on two landing pages this week — the warmer one is winning +18%.",
     sparkline: [40, 48, 52, 58, 60, 65, 70, 72, 78, 80, 82, 84],
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Patient confidently booking an appointment",
+    imagePosition: "center 25%",
+    quote: {
+      text: "Our landing page closes more than our front desk used to.",
+      author: "Dr. Cole",
+      role: "Cedar & Pine DSO",
+    },
   },
   {
     id: "reputation",
@@ -133,6 +164,15 @@ const personas: Capability[] = [
     sparkline: [4.4, 4.5, 4.5, 4.6, 4.6, 4.7, 4.7, 4.8, 4.8, 4.9, 4.9, 4.9].map(
       (v) => (v - 4) * 100,
     ),
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Patient leaving a glowing review",
+    imagePosition: "center 25%",
+    quote: {
+      text: "We went from 4.3 to 4.9 in a season. Bookings followed.",
+      author: "Dr. Mills",
+      role: "Magnolia Orthodontics",
+    },
   },
   {
     id: "retention",
@@ -161,6 +201,15 @@ const personas: Capability[] = [
     agentMessage:
       "Reached out to 186 patients we hadn't heard from in a while — 47 already rebooked.",
     sparkline: [55, 60, 65, 68, 72, 75, 78, 82, 84, 86, 90, 92],
+    image:
+      "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Loyal patients and their families at the practice",
+    imagePosition: "center 35%",
+    quote: {
+      text: "Dormant patients keep coming back. Their friends come with them.",
+      author: "Dr. Reyes",
+      role: "Pacific Family Dental",
+    },
   },
   {
     id: "dashboard",
@@ -189,6 +238,15 @@ const personas: Capability[] = [
     agentMessage:
       "Just refreshed your view — 4 channels tracked, latest 12 seconds ago.",
     sparkline: [20, 25, 35, 30, 42, 50, 48, 58, 65, 70, 78, 88],
+    image:
+      "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Practice owner reviewing real-time performance",
+    imagePosition: "center 25%",
+    quote: {
+      text: "On Monday morning I know exactly what Friday produced.",
+      author: "Dr. Lee",
+      role: "Brighthill Family Dental",
+    },
   },
 ];
 
@@ -200,7 +258,7 @@ export function Solutions() {
   return (
     <section
       id="solutions"
-      className="relative isolate overflow-hidden py-20 md:py-28 text-ink"
+      className="relative isolate overflow-hidden py-16 md:py-24 text-ink"
       style={{ background: "#faf9f7" }}
     >
       {/* Grid pattern overlay */}
@@ -236,50 +294,46 @@ export function Solutions() {
       />
 
       <div className="container-page relative">
-        <div className="mx-auto max-w-6xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 text-[12px] font-medium uppercase tracking-[0.14em] text-ink-soft backdrop-blur">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
-            Built for every seat in the practice
-          </span>
-          <h2 className="mt-5 font-display text-4xl md:text-5xl lg:text-[64px] leading-[1.04] font-semibold tracking-[-0.028em] text-ink">
-            <span className="block lg:whitespace-nowrap">
+        <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.5fr] lg:gap-16">
+          {/* LEFT column — sticky header */}
+          <div className="lg:sticky lg:top-32">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 text-[12px] font-medium uppercase tracking-[0.14em] text-ink-soft backdrop-blur shadow-card">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
+              Built for every seat in the practice
+            </span>
+            <h2 className="mt-5 font-display text-4xl md:text-5xl lg:text-[56px] leading-[1.04] font-semibold tracking-[-0.028em] text-ink">
               One{" "}
               <span className="relative inline-block">
                 <span className="relative z-10" style={{ color: "#FF521C" }}>System</span>
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-accent-butter/60"
-                  style={{ filter: "blur(0.5px)" }}
-                />
               </span>
-              . Every Patient Touchpoint.
-            </span>
-            <span className="block">Nothing Disconnected.</span>
-          </h2>
-          <div className="mx-auto mt-5 max-w-2xl space-y-4 text-[16px] md:text-[17px] leading-[1.6] text-ink-soft">
-            <p className="font-semibold text-ink text-[18px] md:text-[19px]">
-              Most agencies sell you a service.{" "}
-              <span className="text-brand-600">PRACPROS builds you a system.</span>
-            </p>
-            <p>
-              There&rsquo;s a fundamental difference between hiring an agency
-              to run your ads and building a connected growth infrastructure
-              that spans every moment in a patient&rsquo;s decision journey —
-              from the first Google search to the booked appointment to the
-              five-star review they leave afterward.
-            </p>
-            <p className="font-medium text-ink-soft">
-              The PRACPROS system connects six capabilities into one operating
-              engine for your practice:
-            </p>
+              . Every Patient Touchpoint.{" "}
+              <span className="block">Nothing Disconnected.</span>
+            </h2>
+            <div className="mt-6 space-y-4 text-[16px] md:text-[17px] leading-[1.6] text-ink-soft">
+              <p className="font-semibold text-ink text-[18px] md:text-[19px]">
+                Most agencies sell you a service.{" "}
+                <span className="text-brand-600">PRACPROS builds you a system.</span>
+              </p>
+              <p>
+                There&rsquo;s a fundamental difference between hiring an agency
+                to run your ads and building a connected growth infrastructure
+                that spans every moment in a patient&rsquo;s decision journey
+                — from the first Google search to the booked appointment to the
+                five-star review they leave afterward.
+              </p>
+              <p className="font-medium text-ink-soft">
+                Six capabilities. One operating engine.
+              </p>
+            </div>
           </div>
-        </div>
 
+          {/* RIGHT column — tabs + capability card */}
+          <div>
         {/* Connected step indicator — tabs with icons + numbers */}
         <div
           role="tablist"
           aria-label="Capabilities"
-          className="relative mt-14"
+          className="relative"
         >
           {/* Connecting line behind the tabs */}
           <div
@@ -402,78 +456,60 @@ export function Solutions() {
               </div>
             </div>
 
-            {/* RIGHT — live dashboard preview */}
-            <div
-              className="relative overflow-hidden rounded-2xl border border-border p-1"
-              style={{ background: current.accentHex + "20" }}
-            >
-              <div className="relative grid h-full grid-cols-2 gap-3 rounded-[14px] bg-white p-5">
-                {/* Header strip */}
-                <div className="col-span-2 -mb-1 flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-ink/5 px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-ink-soft">
-                    <span className="h-1.5 w-1.5 rounded-full bg-brand-500 animate-pulse" />
-                    Live · PracPros IQ
-                  </span>
-                  <span className="font-mono text-[10.5px] text-muted">
-                    last 12 wks
-                  </span>
-                </div>
-
-                {/* Sparkline strip */}
-                <div className="col-span-2 rounded-xl border border-border bg-subtle/50 p-3">
-                  <Sparkline
-                    points={current.sparkline}
-                    color={current.accentHex}
-                  />
-                </div>
-
-                {/* Metric tiles */}
-                {current.metrics.map((m, i) => (
-                  <PersonaTile
-                    key={`${current.id}-${i}-${m.label}`}
-                    tone={m.emphasized ? current.accent : "bg-white"}
-                    label={m.label}
-                    value={m.value}
-                  />
-                ))}
-
-                {/* Strategist log */}
-                <div className="col-span-2 rounded-xl border border-border bg-white p-4">
-                  <div className="flex items-center gap-3">
-                    <span className="relative grid h-9 w-9 shrink-0 overflow-hidden place-items-center rounded-full border-2 border-white shadow-card">
-                      <Image
-                        src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=200&q=80"
-                        alt="Your PracPros strategist"
-                        fill
-                        sizes="36px"
-                        className="object-cover"
-                        unoptimized
-                      />
-                    </span>
-                    <div className="text-[13px] text-ink-soft">
-                      <span className="font-medium text-ink">Sarah · your strategist</span>{" "}
-                      · {current.agentMessage}
+            {/* RIGHT — big image + quote (humanized) */}
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-white">
+              <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[3/4]">
+                <Image
+                  key={current.id}
+                  src={current.image}
+                  alt={current.imageAlt}
+                  fill
+                  sizes="(min-width: 1024px) 520px, 60vw"
+                  className="object-cover transition-transform duration-700 ease-out scale-[1.05] group-hover:scale-[1.08] animate-fade-up"
+                  style={{ objectPosition: current.imagePosition ?? "center" }}
+                  unoptimized
+                />
+                {/* Bottom gradient for legibility */}
+                <div
+                  aria-hidden
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(67,69,75,0) 45%, rgba(67,69,75,0.78) 100%)",
+                  }}
+                />
+                {/* Top-right metric */}
+                {current.metrics[0] ? (
+                  <div
+                    key={`badge-${current.id}`}
+                    className="absolute right-4 top-4 rounded-xl border border-white/30 bg-white/90 px-3 py-2 shadow-card backdrop-blur animate-chip-pop"
+                  >
+                    <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+                      {current.metrics[0].label}
+                    </div>
+                    <div className="font-display text-[20px] font-semibold leading-none tracking-[-0.02em] text-ink">
+                      {current.metrics[0].value}
                     </div>
                   </div>
-                  <div className="mt-3 grid grid-cols-4 gap-1.5">
-                    {[100, 80, 55, 25].map((pct, n) => (
-                      <div
-                        key={n}
-                        className="h-1.5 overflow-hidden rounded-full bg-ink/10"
-                      >
-                        <div
-                          className="h-full rounded-full"
-                          style={{
-                            width: `${pct}%`,
-                            background: current.accentHex,
-                          }}
-                        />
-                      </div>
-                    ))}
+                ) : null}
+                {/* Bottom quote */}
+                <div
+                  key={`quote-${current.id}`}
+                  className="absolute inset-x-5 bottom-5 text-white animate-feed-in"
+                >
+                  <p className="font-display text-[17px] md:text-[19px] leading-snug tracking-tight">
+                    &ldquo;{current.quote.text}&rdquo;
+                  </p>
+                  <div className="mt-3 flex items-center gap-2 text-[12.5px]">
+                    <span className="font-semibold">{current.quote.author}</span>
+                    <span aria-hidden className="h-1 w-1 rounded-full bg-white/60" />
+                    <span className="text-white/85">{current.quote.role}</span>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
           </div>
         </div>
       </div>

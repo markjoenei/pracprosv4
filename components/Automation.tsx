@@ -80,7 +80,7 @@ const syncs: Sync[] = [
 
 export function Automation() {
   return (
-    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "#faf9f7" }}>
+    <section className="relative overflow-hidden py-16 md:py-24" style={{ background: "#faf9f7" }}>
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-[1]"
@@ -105,13 +105,7 @@ export function Automation() {
           <h2 className="mt-5 font-display text-4xl md:text-5xl lg:text-[60px] leading-[1.04] font-semibold tracking-[-0.028em] text-ink">
             The Best Practices Run With{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-[#FF521C]">Consistency</span>
-              <span
-                aria-hidden
-                className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-accent-butter"
-                style={{ filter: "blur(0.5px)" }}
-              />
-            </span>
+              <span className="relative z-10 text-[#FF521C]">Consistency</span></span>
             <span className="block">Across Every Touchpoint.</span>
           </h2>
           <div className="mx-auto mt-6 max-w-3xl space-y-4 text-[16px] md:text-[17px] leading-[1.65] text-ink-soft">
@@ -154,7 +148,7 @@ export function Automation() {
               <div className="flex items-center gap-4 animate-feed-in">
                 <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-[3px] border-white shadow-card">
                   <Image
-                    src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=300&q=80"
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80"
                     alt="Jen, office manager"
                     fill
                     sizes="64px"

@@ -1,66 +1,106 @@
 import Image from "next/image";
 import { Button } from "./ui/Button";
 
+type Node = {
+  label: string;
+  value: string;
+  side: "left" | "right";
+  top: string;
+  iconBg: string;
+  iconFg: string;
+  icon: React.ReactNode;
+};
+
 function PlatformVisual() {
-  const nodes = [
+  const nodes: Node[] = [
     {
       label: "Website + SEO",
+      value: "#1 ranked · 186 keywords",
       side: "left",
-      top: "8%",
-      color: "bg-accent-mint",
-      iconBg: "bg-accent-mint",
+      top: "6%",
+      iconBg: "bg-brand-50",
+      iconFg: "text-brand-700",
       icon: (
-        <path d="M2 6h12M2 10h12M4 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M2 6h12M2 10h12M4 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       ),
     },
     {
       label: "Google Ads",
+      value: "6.4× ROAS",
       side: "left",
       top: "32%",
-      color: "bg-accent-butter",
-      iconBg: "bg-accent-butter",
+      iconBg: "bg-brand-50",
+      iconFg: "text-brand-700",
       icon: (
         <path d="M8 1.5l5.5 9.5h-11L8 1.5z M8 7L10.5 14h-5L8 7z" fill="currentColor" />
       ),
     },
     {
       label: "Reviews & Reputation",
+      value: "4.9★ · 1,247 reviews",
       side: "left",
       top: "58%",
-      color: "bg-accent-blush",
-      iconBg: "bg-accent-blush",
+      iconBg: "bg-brand-50",
+      iconFg: "text-brand-700",
       icon: (
         <path d="M8 1l2 4.5 5 .5-3.7 3.3 1.2 5L8 11.7 3.5 14.3l1.2-5L1 6l5-.5L8 1z" fill="currentColor" />
       ),
     },
     {
-      label: "Lead Response · 60s",
+      label: "Lead Response",
+      value: "47s avg · 24/7",
       side: "right",
-      top: "12%",
-      color: "bg-accent-sky",
-      iconBg: "bg-accent-sky",
+      top: "10%",
+      iconBg: "bg-subtle",
+      iconFg: "text-ink",
       icon: (
-        <path d="M8 2v6l4 2 M8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <>
+          <circle cx="8" cy="8" r="6.4" stroke="currentColor" strokeWidth="1.4" fill="none" />
+          <path d="M8 4.5V8L10.4 9.6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+        </>
       ),
     },
     {
       label: "Front Desk AI",
+      value: "0 missed calls",
       side: "right",
-      top: "40%",
-      color: "bg-accent-lavender",
-      iconBg: "bg-accent-lavender",
+      top: "38%",
+      iconBg: "bg-subtle",
+      iconFg: "text-ink",
       icon: (
-        <path d="M5 6.5a3 3 0 0 1 6 0v1a3 3 0 0 1-6 0v-1z M2.5 13.5c0-2.5 2.5-4 5.5-4s5.5 1.5 5.5 4" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M5 6.5a3 3 0 0 1 6 0v1a3 3 0 0 1-6 0v-1z M2.5 13.5c0-2.5 2.5-4 5.5-4s5.5 1.5 5.5 4"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       ),
     },
     {
       label: "ROI Dashboard",
+      value: "+38% pipeline",
       side: "right",
-      top: "66%",
-      color: "bg-brand-100",
-      iconBg: "bg-brand-100",
+      top: "64%",
+      iconBg: "bg-subtle",
+      iconFg: "text-ink",
       icon: (
-        <path d="M2 13l4-5 3 3 5-7 M11 4h3v3" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        <path
+          d="M2 13l4-5 3 3 5-7 M11 4h3v3"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       ),
     },
   ];
@@ -78,26 +118,6 @@ function PlatformVisual() {
           }}
         />
 
-        {/* Background grid panel */}
-        <div
-          aria-hidden
-          className="absolute inset-[6%] rounded-[28px] overflow-hidden"
-          style={{
-            background:
-              "linear-gradient(180deg, #faf9f7 0%, #faf9f7 100%)",
-            border: "1px solid var(--color-border)",
-          }}
-        >
-          <div
-            className="absolute inset-0 opacity-60"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(67,69,75,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(67,69,75,0.08) 1px, transparent 1px)",
-              backgroundSize: "32px 32px",
-            }}
-          />
-        </div>
-
         {/* Connecting curves with animated dash */}
         <svg
           aria-hidden
@@ -113,7 +133,7 @@ function PlatformVisual() {
               <stop offset="100%" stopColor="rgba(67,69,75,0.05)" />
             </linearGradient>
           </defs>
-          <g stroke="url(#lineGrad)" strokeWidth="1.6" fill="none">
+          <g stroke="url(#lineGrad)" strokeWidth="1.2" fill="none">
             <path d="M120 90 C 220 110, 260 240, 300 336" />
             <path d="M120 240 C 220 250, 260 300, 300 336" />
             <path d="M120 430 C 220 410, 260 380, 300 336" />
@@ -121,7 +141,7 @@ function PlatformVisual() {
             <path d="M480 300 C 400 310, 360 320, 300 336" />
             <path d="M480 480 C 380 440, 340 380, 300 336" />
           </g>
-          <g stroke="rgba(67,69,75,0.7)" strokeWidth="1.4" strokeDasharray="3 6" fill="none">
+          <g stroke="rgba(255,82,28,0.55)" strokeWidth="1.1" strokeDasharray="2 7" fill="none">
             <path d="M120 90 C 220 110, 260 240, 300 336">
               <animate attributeName="stroke-dashoffset" from="0" to="-36" dur="4s" repeatCount="indefinite" />
             </path>
@@ -146,79 +166,19 @@ function PlatformVisual() {
         {/* Central dashboard card — bigger */}
         <div className="absolute left-1/2 top-1/2 w-[64%] -translate-x-1/2 -translate-y-1/2 animate-kpi-rise">
           <div className="overflow-hidden rounded-[24px] border border-border bg-white shadow-[0_50px_110px_-30px_rgba(67,69,75,0.5)]">
-            {/* Header bar */}
-            <div className="flex items-center justify-between border-b border-border bg-subtle/60 px-5 py-3.5">
-              <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-brand-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-brand-300" />
-                <span className="h-2.5 w-2.5 rounded-full bg-brand-400" />
-              </div>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[12px] font-semibold uppercase tracking-[0.14em] text-ink shadow-card">
-                <span className="h-2 w-2 rounded-full bg-brand-500 animate-pulse" />
-                Live · PracPros IQ
-              </span>
-            </div>
-
-            {/* Image header */}
-            <div className="relative aspect-[16/10] w-full overflow-hidden">
+            {/* Image header — dentist (enlarged, no text overlay) */}
+            <div className="relative aspect-[3/4] w-full overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1100&q=85"
-                alt="Connected growth dashboard"
+                src="/dentists/platform.png"
+                alt="Smiling dentist in her practice"
                 fill
-                sizes="(min-width: 1024px) 560px, 60vw"
+                sizes="(min-width: 1024px) 600px, 70vw"
                 className="object-cover"
-                unoptimized
+                style={{ objectPosition: "center 18%" }}
+                priority
               />
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(255,255,255,0) 30%, rgba(10,10,10,0.7) 100%)",
-                }}
-              />
-              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-                <div>
-                  <div className="text-[12px] font-semibold uppercase tracking-[0.14em] text-white/85">
-                    Pipeline · this month
-                  </div>
-                  <div className="mt-1 font-display text-[40px] font-semibold leading-none tracking-tight text-white">
-                    +38%
-                  </div>
-                </div>
-                <span className="rounded-full bg-brand-500/95 px-3 py-1 text-[12px] font-semibold text-white">
-                  ▲ on target
-                </span>
-              </div>
             </div>
 
-            {/* Mini-rows — bigger */}
-            <div className="space-y-2.5 p-4">
-              {[
-                { label: "New patients", value: "126", pct: 78, delay: "0.1s" },
-                { label: "Booked from web", value: "84%", pct: 92, delay: "0.25s" },
-                { label: "Avg response time", value: "47s", pct: 96, delay: "0.4s" },
-              ].map((r) => (
-                <div
-                  key={r.label}
-                  className="flex items-center gap-3 rounded-xl border border-border bg-subtle/50 px-4 py-2.5 animate-feed-in"
-                  style={{ animationDelay: r.delay }}
-                >
-                  <span className="flex-1 truncate text-[14px] font-medium text-ink">
-                    {r.label}
-                  </span>
-                  <div className="h-2 w-28 overflow-hidden rounded-full bg-ink/10">
-                    <div
-                      className="h-full origin-left rounded-full bg-brand-500 animate-bar-fill"
-                      style={{ width: `${r.pct}%`, animationDelay: r.delay }}
-                    />
-                  </div>
-                  <span className="w-12 text-right text-[14px] font-semibold tabular-nums text-ink">
-                    {r.value}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Central node dot below the card */}
@@ -230,11 +190,11 @@ function PlatformVisual() {
           </div>
         </div>
 
-        {/* Floating node chips — bigger, staggered fade-in */}
+        {/* Floating live-status cards — premium pill design */}
         {nodes.map((n, i) => (
           <div
             key={n.label}
-            className={`absolute z-10 inline-flex items-center gap-3 rounded-2xl border border-border bg-white py-2.5 pl-2.5 pr-5 shadow-card animate-float-soft ${
+            className={`group absolute z-10 inline-flex items-center gap-2.5 sm:gap-3.5 rounded-2xl border border-border bg-white/95 px-3 py-2 sm:px-4 sm:py-3 shadow-[0_18px_40px_-20px_rgba(67,69,75,0.35)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_60px_-22px_rgba(67,69,75,0.4)] animate-float-soft ${
               n.side === "left" ? "left-0" : "right-0"
             }`}
             style={{
@@ -244,15 +204,24 @@ function PlatformVisual() {
             }}
           >
             <span
-              className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl ${n.iconBg} text-ink/80`}
+              className={`grid h-9 w-9 sm:h-11 sm:w-11 shrink-0 place-items-center rounded-xl ${n.iconBg} ${n.iconFg} transition-transform duration-300 group-hover:scale-110`}
             >
-              <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden>
+              <svg className="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 16 16" aria-hidden>
                 {n.icon}
               </svg>
             </span>
-            <span className="text-[15px] font-semibold tracking-tight text-ink whitespace-nowrap">
-              {n.label}
-            </span>
+            <div className="flex flex-col leading-tight">
+              <span className="font-display text-[12px] sm:text-[14.5px] font-semibold tracking-tight text-ink whitespace-nowrap">
+                {n.label}
+              </span>
+              <span className="flex items-center gap-1.5 font-mono text-[10px] sm:text-[11.5px] font-medium text-ink-soft whitespace-nowrap">
+                <span aria-hidden className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500 opacity-50" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-500" />
+                </span>
+                {n.value}
+              </span>
+            </div>
           </div>
         ))}
       </div>
@@ -264,7 +233,7 @@ export function Platform() {
   return (
     <section
       id="platform"
-      className="relative isolate overflow-hidden py-20 md:py-28 text-ink"
+      className="relative isolate overflow-hidden py-16 md:py-24 text-ink"
       style={{ background: "#faf9f7" }}
     >
       {/* Soft brand grid */}
@@ -294,40 +263,21 @@ export function Platform() {
               <span className="block">
                 What You Don&rsquo;t Have Is a{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10" style={{ color: "#FF521C" }}>System</span>
-                  <span
-                    aria-hidden
-                    className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-accent-butter/60"
-                    style={{ filter: "blur(0.5px)" }}
-                  />
-                </span>
+                  <span className="relative z-10" style={{ color: "#FF521C" }}>System</span></span>
                 .
               </span>
             </h2>
 
             <div className="mt-7 space-y-5 text-[18px] leading-[1.65] text-ink-soft">
               <p>
-                Most dental practices are failing because their marketing is
-                fragmented. A website, maybe some SEO, Google Ads, a social
-                media post here and there, a reputation tool that nobody checks,
-                and a front desk handling inquiries manually at the speed of
-                human reaction.
-              </p>
-              <p>
-                That patchwork approach worked a decade ago. It doesn&rsquo;t
-                anymore.
-              </p>
-              <p>
-                Patients move fast. They search, compare, and contact multiple
-                offices within minutes. They book with whoever responds first.
-              </p>
-              <p>
-                The practice that wins is rarely the most skilled. It&rsquo;s
-                the most systematic. It&rsquo;s the one with a connected growth
-                engine that finds patients where they&rsquo;re searching,
-                engages them before a competitor can, and converts inquiries
-                into booked appointments without relying on a perfect front-desk
-                day.
+                Modern dental practices are failing because they rely on
+                fragmented, outdated marketing tactics and slow manual
+                follow-ups. In today&rsquo;s fast-paced market, patients book
+                with whoever responds first, meaning success no longer depends
+                on being the most skilled, but on being the most systematic. To
+                win, practices must replace their patchwork methods with an
+                automated, connected growth engine that instantly captures,
+                engages, and converts inquiries into booked appointments.
               </p>
               <p className="font-semibold text-ink">
                 Most practices don&rsquo;t have that system.{" "}

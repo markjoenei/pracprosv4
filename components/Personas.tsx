@@ -96,13 +96,12 @@ const reviews: ReviewCard[] = [
   },
 ];
 
-const HERO_PORTRAIT =
-  "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=1100&q=85";
+const HERO_PORTRAIT = "/dentists/personas-hero.webp";
 
 export function Personas() {
   return (
     <section
-      className="relative isolate overflow-hidden py-20 md:py-28 text-ink"
+      className="relative isolate overflow-hidden py-16 md:py-24 text-ink"
       style={{ background: "#faf9f7" }}
     >
       <div
@@ -144,13 +143,7 @@ export function Personas() {
             <span className="block lg:whitespace-nowrap">
               Than Your Ads. Treat Them{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-[#FF521C]">That Way.</span>
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-accent-butter"
-                  style={{ filter: "blur(0.5px)" }}
-                />
-              </span>
+                <span className="relative z-10 text-[#FF521C]">That Way.</span></span>
             </span>
           </h2>
           <div className="mx-auto mt-6 max-w-3xl space-y-4 text-[15.5px] md:text-[16.5px] leading-[1.65] text-ink-soft">

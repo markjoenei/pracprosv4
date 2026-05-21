@@ -6,11 +6,13 @@ import { Logo } from "./ui/Logo";
 import { Button } from "./ui/Button";
 
 const navItems = [
-  { label: "Platform", href: "#platform" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Resources", href: "#resources" },
-  { label: "Customers", href: "#stories" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Home", href: "/" },
+  { label: "Get New Patients", href: "#solutions" },
+  { label: "Services", href: "#platform" },
+  { label: "Products", href: "#resources" },
+  { label: "Our Difference", href: "#why" },
+  { label: "Blog", href: "#blog" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -33,27 +35,33 @@ export function Navbar() {
           : "border-b border-white/10"
       }`}
     >
-      <div className="container-page flex h-16 items-center justify-between md:h-[72px]">
-        <div className="flex items-center gap-10">
-          <Link
-            href="/"
-            aria-label="PracPros home"
-            className="rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300"
-          >
-            <Logo invert />
-          </Link>
-          <nav className="hidden md:flex items-center gap-1">
+      <div className="container-page relative flex h-16 items-center justify-between md:h-[72px]">
+        <Link
+          href="/"
+          aria-label="PracPros home"
+          className="rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-300"
+        >
+          <Logo invert />
+        </Link>
+
+        {/* Centered nav */}
+        <nav className="pointer-events-none absolute inset-0 hidden items-center justify-center md:flex">
+          <div className="pointer-events-auto flex items-center gap-7">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative rounded-full px-3 py-1.5 text-[14px] font-medium text-white/75 transition-colors hover:text-white"
+                className="group relative text-[14px] font-medium text-white/75 transition-colors hover:text-white"
               >
                 {item.label}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 -bottom-1 h-px origin-center scale-x-0 bg-white/80 transition-transform duration-300 ease-out group-hover:scale-x-100"
+                />
               </Link>
             ))}
-          </nav>
-        </div>
+          </div>
+        </nav>
 
         <div className="hidden md:flex items-center gap-2">
           <Link

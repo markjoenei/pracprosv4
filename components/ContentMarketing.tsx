@@ -12,7 +12,7 @@ const platforms = [
 
 export function ContentMarketing() {
   return (
-    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "#faf9f7" }}>
+    <section className="relative overflow-hidden py-16 md:py-24" style={{ background: "#faf9f7" }}>
       {/* Soft brand grid */}
       <div
         aria-hidden
@@ -38,13 +38,7 @@ export function ContentMarketing() {
           <h2 className="mt-5 font-display text-4xl md:text-5xl lg:text-[60px] leading-[1.04] font-semibold tracking-[-0.028em] text-ink">
             Content That Feels Like{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-[#FF521C]">Your Practice.</span>
-              <span
-                aria-hidden
-                className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-accent-butter"
-                style={{ filter: "blur(0.5px)" }}
-              />
-            </span>
+              <span className="relative z-10 text-[#FF521C]">Your Practice.</span></span>
             <span className="block">Not Like Every Other Dental Practice.</span>
           </h2>
 

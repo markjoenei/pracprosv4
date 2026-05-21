@@ -35,6 +35,13 @@
   --shadow-card: 0 1px 0 rgba(67, 69, 75, 0.05), 0 8px 24px -12px rgba(67, 69, 75, 0.12);
   --shadow-card-hover: 0 1px 0 rgba(67, 69, 75, 0.06), 0 20px 48px -20px rgba(67, 69, 75, 0.2);
   --shadow-pop: 0 24px 60px -24px rgba(255, 82, 28, 0.35);
+
+  --animate-marquee: marquee 38s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 html {
@@ -49,6 +56,10 @@ body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, sans-serif;
   font-feature-settings: "ss01", "cv11";
+}
+
+h1, h2, h3 {
+  text-transform: uppercase;
 }
 
 ::selection {
@@ -95,11 +106,6 @@ body {
 @keyframes float-soft {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 .marquee-track:hover { animation-play-state: paused; }
@@ -181,8 +187,30 @@ body {
   100% { background-position: 200% 50%; }
 }
 
+@keyframes hero-underline {
+  0%   { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+/* Chat-cycle animations — each step appears then loops on a 7s cycle */
+@keyframes chat-step {
+  0%, 8%   { opacity: 0; transform: translateY(8px); }
+  16%, 88% { opacity: 1; transform: translateY(0); }
+  96%, 100%{ opacity: 0; transform: translateY(-4px); }
+}
+
+@keyframes chat-typing {
+  0%, 8%    { opacity: 0; }
+  16%, 42%  { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes typing-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%           { transform: translateY(-3px); opacity: 1; }
+}
+
 .animate-float-soft     { animation: float-soft 6s ease-in-out infinite; }
-.animate-marquee        { animation: marquee 38s linear infinite; }
 .animate-fade-up        { animation: fade-up 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 .animate-grid-drift     { animation: grid-drift 14s linear infinite; }
 .animate-grid-pulse     { animation: grid-pulse 6s ease-in-out infinite; }
@@ -201,6 +229,10 @@ body {
   background-size: 200% 100%;
   animation: sync-shimmer 3.5s linear infinite;
 }
+.animate-hero-underline { animation: hero-underline 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s both; }
+.animate-chat-step      { animation: chat-step 7s ease-in-out infinite; opacity: 0; }
+.animate-chat-typing    { animation: chat-typing 7s ease-in-out infinite; opacity: 0; }
+.animate-typing-dot     { animation: typing-dot 1s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-float-soft,
@@ -219,7 +251,11 @@ body {
   .animate-bar-fill,
   .animate-feed-in,
   .animate-chip-pop,
-  .animate-sync-shimmer {
+  .animate-sync-shimmer,
+  .animate-hero-underline,
+  .animate-chat-step,
+  .animate-chat-typing,
+  .animate-typing-dot {
     animation: none !important;
   }
   html { scroll-behavior: auto; }

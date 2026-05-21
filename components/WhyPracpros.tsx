@@ -87,7 +87,7 @@ const reasons: Reason[] = [
 export function WhyPracpros() {
   return (
     <section
-      className="relative isolate overflow-hidden py-20 md:py-28 text-ink"
+      className="relative isolate overflow-hidden py-16 md:py-24 text-ink"
       style={{ background: "#faf9f7" }}
     >
       <div
@@ -128,13 +128,7 @@ export function WhyPracpros() {
           <h2 className="mt-5 font-display text-4xl md:text-5xl lg:text-[60px] leading-[1.04] font-semibold tracking-[-0.028em] text-ink">
             Why the{" "}
             <span className="relative inline-block">
-              <span className="relative z-10" style={{ color: "#FF521C" }}>Fastest-Growing</span>
-              <span
-                aria-hidden
-                className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-accent-butter/60"
-                style={{ filter: "blur(0.5px)" }}
-              />
-            </span>
+              <span className="relative z-10" style={{ color: "#FF521C" }}>Fastest-Growing</span></span>
             <span className="block">Practices Choose PRACPROS.</span>
           </h2>
         </Reveal>
@@ -170,7 +164,7 @@ export function WhyPracpros() {
               {r.title.startsWith("Technology and people") ? (
                 <div className="relative mt-5 flex items-center gap-2">
                   {[
-                    "https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=120&q=80",
+                    "https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=120&q=80",
                     "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=120&q=80",
                     "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80",
                     "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",

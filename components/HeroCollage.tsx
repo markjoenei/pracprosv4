@@ -15,6 +15,12 @@ type Scene = {
   alt: string;
   objectPosition?: string;
   scale?: number;
+  /** percent shift down within the portrait frame, applied as translateY */
+  yOffsetPct?: number;
+  /** percent shift right within the portrait frame, applied as translateX */
+  xOffsetPct?: number;
+  /** CSS filter applied to the portrait image */
+  filter?: string;
   bubble: string;
   stat: { value: string; label: string };
   chip: { dotColor: string; text: string };
@@ -28,6 +34,7 @@ const SCENES: Scene[] = [
     src: "/dentists/recall.png",
     alt: "Smiling dental professional in blue scrubs with stethoscope",
     objectPosition: "center top",
+    scale: 1.25,
     bubble: "Recall 600 overdue patients within minutes",
     stat: { value: "+22%", label: "production" },
     chip: { dotColor: "bg-brand-500", text: "0 missed calls today" },
@@ -39,7 +46,10 @@ const SCENES: Scene[] = [
     src: "/dentists/schedule.png",
     alt: "Female dentist with curly hair smiling, arms crossed",
     objectPosition: "center top",
-    scale: 1.05,
+    scale: 1.7,
+    yOffsetPct: 44,
+    xOffsetPct: 8,
+    filter: "contrast(1.07) saturate(1.12) brightness(1.02)",
     bubble: "Fill every chair-hour, automatically",
     stat: { value: "−42%", label: "no-shows" },
     chip: { dotColor: "bg-brand-500", text: "Chairs 96% booked this week" },
@@ -70,7 +80,7 @@ export function HeroCollage() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="relative mx-auto aspect-[16/9] w-full max-w-[980px]">
+      <div className="relative mx-auto aspect-[5/6] w-full max-w-[980px] sm:aspect-[5/4] md:aspect-[16/9]">
         {/* Base glow */}
         <div
           aria-hidden
@@ -191,13 +201,16 @@ export function HeroCollage() {
         </div>
 
         {/* Portrait — all scenes stacked, cross-fade between them */}
-        <div className="absolute left-1/2 top-[2%] h-[98%] w-[46%] -translate-x-1/2 animate-portrait-bob">
+        <div className="absolute left-1/2 top-[18%] h-[100%] w-[78%] -translate-x-1/2 animate-portrait-bob sm:w-[64%] lg:w-[54%]">
           <div
             className="relative h-full w-full"
             style={{ filter: "drop-shadow(0 30px 30px rgba(0,0,0,0.35))" }}
           >
             {SCENES.map((s, i) => {
               const active = i === idx;
+              const yShift = s.yOffsetPct ?? 0;
+              const xShift = s.xOffsetPct ?? 0;
+              const baseY = active ? yShift : yShift + 1.4;
               return (
                 <div
                   key={s.key}
@@ -205,11 +218,11 @@ export function HeroCollage() {
                   className="absolute inset-0"
                   style={{
                     opacity: active ? 1 : 0,
-                    transform: `translateY(${active ? 0 : 14}px) scale(${active ? 1 : 0.97})`,
+                    transform: `translate(${xShift}%, ${baseY}%) scale(${active ? 1 : 0.97})`,
                     transformOrigin: "center bottom",
                     transition:
                       "opacity 900ms cubic-bezier(0.22, 1, 0.36, 1), transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 900ms ease-out",
-                    filter: active ? "blur(0)" : "blur(6px)",
+                    filter: active ? undefined : "blur(6px)",
                     pointerEvents: active ? "auto" : "none",
                   }}
                 >
@@ -223,6 +236,7 @@ export function HeroCollage() {
                       objectPosition: s.objectPosition ?? "center bottom",
                       transform: s.scale ? `scale(${s.scale})` : undefined,
                       transformOrigin: "center bottom",
+                      filter: s.filter,
                     }}
                     priority={i === 0}
                   />
@@ -245,11 +259,11 @@ export function HeroCollage() {
         {/* Chat-bubble callout (left) — keyed entrance + continuous float */}
         <div
           key={`bubble-${scene.key}`}
-          className="absolute left-[2%] top-[28%] w-[36%] max-w-[360px] animate-scene-in-left"
+          className="absolute left-[2%] bottom-[20%] w-[56%] max-w-[260px] animate-scene-in-left sm:bottom-auto sm:top-[24%] sm:w-[44%] sm:max-w-[320px] md:top-[28%] md:w-[36%] md:max-w-[360px]"
           style={{ animationDelay: "140ms" }}
         >
           <div
-            className="relative rounded-[14px] bg-white p-4 pl-3 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.5)] animate-float-soft"
+            className="relative rounded-[14px] bg-white p-3.5 pl-3 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.5)] animate-float-soft sm:p-4"
             style={{ animationDuration: "7s" }}
           >
             <span
@@ -264,12 +278,12 @@ export function HeroCollage() {
             <div className="flex items-start gap-3">
               <span
                 aria-hidden
-                className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full text-[12px] font-bold text-white"
+                className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full text-[13px] font-bold text-white sm:h-7 sm:w-7 sm:text-[12px]"
                 style={{ background: "var(--color-brand-500)" }}
               >
                 P
               </span>
-              <p className="font-display text-[15px] md:text-[18px] leading-[1.2] tracking-[-0.01em] text-ink">
+              <p className="font-display text-[14px] sm:text-[15px] md:text-[18px] leading-[1.2] tracking-[-0.01em] text-ink">
                 {scene.bubble}
               </p>
             </div>
@@ -279,21 +293,21 @@ export function HeroCollage() {
         {/* Stat callout (right) — keyed entrance + continuous float */}
         <div
           key={`stat-${scene.key}`}
-          className="absolute right-[4%] top-[18%] w-[18%] min-w-[140px] animate-scene-in-right"
+          className="absolute right-[4%] bottom-[20%] w-[34%] min-w-[110px] animate-scene-in-right sm:bottom-auto sm:top-[14%] sm:w-[24%] sm:min-w-[140px] md:top-[18%] md:w-[18%]"
           style={{ animationDelay: "220ms" }}
         >
           <div
-            className="rounded-[10px] p-3 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.5)] animate-float-soft"
+            className="rounded-[12px] p-3.5 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.5)] animate-float-soft sm:p-3"
             style={{
               background: "var(--color-brand-900)",
               animationDuration: "9s",
               animationDelay: "0.4s",
             }}
           >
-            <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/70">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/70 sm:text-[10px]">
               {scene.stat.label}
             </div>
-            <div className="mt-1 font-display text-[42px] md:text-[54px] leading-none font-semibold tracking-[-0.03em] text-white">
+            <div className="mt-1 font-display text-[40px] sm:text-[42px] md:text-[54px] leading-none font-semibold tracking-[-0.03em] text-white">
               {scene.stat.value}
             </div>
           </div>
@@ -302,14 +316,14 @@ export function HeroCollage() {
         {/* Bottom-left chip — keyed entrance + continuous float */}
         <div
           key={`chip-${scene.key}`}
-          className="absolute left-[6%] bottom-[10%] animate-scene-in-up"
+          className="absolute left-1/2 -translate-x-1/2 bottom-[6%] animate-scene-in-up sm:left-[6%] sm:translate-x-0 sm:bottom-[10%]"
           style={{ animationDelay: "360ms" }}
         >
           <div
-            className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink shadow-card animate-float-soft"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-2 text-[12.5px] font-semibold uppercase tracking-[0.12em] text-ink shadow-card animate-float-soft sm:px-3 sm:py-1.5 sm:text-[11px]"
             style={{ animationDuration: "8s", animationDelay: "0.7s" }}
           >
-            <span className={`h-1.5 w-1.5 rounded-full ${scene.chip.dotColor}`} />
+            <span className={`h-2 w-2 rounded-full ${scene.chip.dotColor} sm:h-1.5 sm:w-1.5`} />
             <span>{scene.chip.text}</span>
           </div>
         </div>

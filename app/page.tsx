@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { LogoCloud } from "@/components/LogoCloud";
+import { Stats } from "@/components/Stats";
 import { Platform } from "@/components/Platform";
 import { Benefits } from "@/components/Benefits";
 import { Solutions } from "@/components/Solutions";
@@ -14,6 +15,7 @@ import { Automation } from "@/components/Automation";
 import { Referral } from "@/components/Referral";
 import { HowItWorks } from "@/components/HowItWorks";
 import { WhyPracpros } from "@/components/WhyPracpros";
+import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -23,6 +25,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <LogoCloud />
+        <Stats />
         <Platform />
         <Benefits />
         <Solutions />
@@ -36,6 +39,7 @@ export default function Home() {
         <Referral />
         <HowItWorks />
         <WhyPracpros />
+        <FAQ />
       </main>
       <Footer />
     </>

@@ -4,7 +4,7 @@ import { SideElements } from "./BenefitsSideElements";
 export function Benefits() {
   return (
     <section
-      className="relative overflow-hidden py-24 md:py-32"
+      className="relative overflow-hidden py-20 md:py-28"
       style={{ background: "#faf9f7" }}
     >
       {/* Soft brand grid */}
@@ -116,21 +116,13 @@ export function Benefits() {
         {/* ── Body copy ─────────────────────────────────── */}
         <div className="mx-auto mt-16 max-w-3xl space-y-6 text-[17px] md:text-[18px] leading-[1.7] text-ink-soft">
           <p>
-            Running a practice is already a full-time leadership position.
-            You&rsquo;re managing clinical outcomes, staffing, operations,
-            patient experience, insurance, scheduling, and growth pressure —
-            simultaneously. The last thing you need is a marketing situation
-            that demands another layer of your attention.
-          </p>
-          <p className="font-semibold text-ink text-[20px] md:text-[22px]">
-            That&rsquo;s not what PRACPROS looks like.
-          </p>
-          <p>
-            We handle the strategy, the systems, the execution, the
-            optimization, and the reporting. You get a growth engine that runs
-            in the background — and a dashboard that tells you exactly what
-            it&rsquo;s producing — without you needing to chase reports or
-            decipher agency speak.
+            Running a dental practice is a demanding, full-time leadership job
+            that leaves no room for managing complex marketing tactics.
+            PRACPROS eliminates this extra burden by completely handling the
+            strategy, systems, execution, and optimization in the background.
+            Instead of forcing you to chase reports or decipher agency jargon,
+            they provide a hands-off growth engine and a clear, simple
+            dashboard that shows you exactly what results are being produced.
           </p>
         </div>
 
@@ -154,43 +146,6 @@ export function Benefits() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* ── The deal callout ───────────────────────────── */}
-        <div className="mx-auto mt-14 max-w-4xl">
-          <div
-            className="relative overflow-hidden rounded-[28px] p-[1.5px]"
-            style={{
-              background:
-                "linear-gradient(135deg, #FF521C 0%, #43454B 50%, #FF521C 100%)",
-            }}
-          >
-            <div className="relative rounded-[26px] bg-white p-10 md:p-14">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full blur-3xl opacity-50"
-                style={{
-                  background:
-                    "radial-gradient(circle, rgba(67,69,75,0.5), transparent 70%)",
-                }}
-              />
-              <span
-                aria-hidden
-                className="absolute -top-3 left-10 inline-flex items-center gap-1.5 rounded-full bg-ink px-3 py-1 text-[10.5px] font-semibold uppercase tracking-[0.14em] text-white shadow-card"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-brand-300" />
-                The deal
-              </span>
-              <p className="relative font-display text-[24px] md:text-[34px] leading-[1.2] tracking-[-0.02em] text-ink">
-                Your job is to deliver{" "}
-                <span className="text-brand-600">exceptional dentistry.</span>
-                <span className="block mt-1">
-                  Ours is to make sure the right patients are in your chair to
-                  receive it.
-                </span>
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* ── CTAs ──────────────────────────────────────── */}

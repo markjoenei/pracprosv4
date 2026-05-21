@@ -12,7 +12,7 @@ const sources = [
 export function Dashboard() {
   return (
     <section
-      className="relative isolate overflow-hidden py-20 md:py-28 text-ink"
+      className="relative isolate overflow-hidden py-16 md:py-24 text-ink"
       style={{ background: "#faf9f7" }}
     >
       <div
@@ -53,13 +53,7 @@ export function Dashboard() {
           <h2 className="mt-5 font-display text-4xl md:text-5xl lg:text-[60px] leading-[1.04] font-semibold tracking-[-0.028em] text-ink">
             You Shouldn&rsquo;t Have to{" "}
             <span className="relative inline-block">
-              <span className="relative z-10" style={{ color: "#FF521C" }}>Wonder</span>
-              <span
-                aria-hidden
-                className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-accent-butter/60"
-                style={{ filter: "blur(0.5px)" }}
-              />
-            </span>
+              <span className="relative z-10" style={{ color: "#FF521C" }}>Wonder</span></span>
             <span className="block">Where Your Patients Are Coming From.</span>
           </h2>
 

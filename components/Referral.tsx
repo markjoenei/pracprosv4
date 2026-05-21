@@ -43,7 +43,7 @@ const referredPeople = [
 export function Referral() {
   return (
     <section
-      className="relative isolate overflow-hidden py-20 md:py-28 text-ink"
+      className="relative isolate overflow-hidden py-16 md:py-24 text-ink"
       style={{ background: "#faf9f7" }}
     >
       <div
@@ -84,13 +84,7 @@ export function Referral() {
           <h2 className="mt-5 font-display text-4xl md:text-5xl lg:text-[60px] leading-[1.04] font-semibold tracking-[-0.028em] text-ink">
             Your Happiest Patients Are Your{" "}
             <span className="relative inline-block">
-              <span className="relative z-10" style={{ color: "#FF521C" }}>Most Underutilized</span>
-              <span
-                aria-hidden
-                className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-accent-butter/60"
-                style={{ filter: "blur(0.5px)" }}
-              />
-            </span>
+              <span className="relative z-10" style={{ color: "#FF521C" }}>Most Underutilized</span></span>
             <span className="block">Growth Channel.</span>
           </h2>
           <div className="mt-6 space-y-4 text-[16px] md:text-[17px] leading-[1.65] text-ink-soft">
@@ -236,12 +230,12 @@ export function Referral() {
                   animationDelay: p.delay,
                 }}
               >
-                <div className="relative h-[80px] w-[80px] overflow-hidden rounded-full border-4 border-white shadow-[0_18px_30px_-12px_rgba(67,69,75,0.45)] md:h-[88px] md:w-[88px]">
+                <div className="relative h-[56px] w-[56px] overflow-hidden rounded-full border-[3px] border-white shadow-[0_18px_30px_-12px_rgba(67,69,75,0.45)] sm:h-[72px] sm:w-[72px] md:h-[88px] md:w-[88px] md:border-4">
                   <Image
                     src={p.img}
                     alt={p.name}
                     fill
-                    sizes="88px"
+                    sizes="(min-width: 768px) 88px, 56px"
                     className="object-cover"
                     style={{ objectPosition: "center 25%" }}
                     unoptimized

@@ -20,13 +20,7 @@ export function FinalCTA() {
               <h2 className="font-display text-4xl md:text-5xl lg:text-[64px] leading-[1.04] font-semibold tracking-[-0.028em] text-white">
                 Spend your day{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10" style={{ color: "#FF521C" }}>chairside</span>
-                  <span
-                    aria-hidden
-                    className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-accent-butter/40"
-                    style={{ filter: "blur(0.5px)" }}
-                  />
-                </span>
+                  <span className="relative z-10" style={{ color: "#FF521C" }}>chairside</span></span>
                 ,
                 <br />
                 not on the phone.

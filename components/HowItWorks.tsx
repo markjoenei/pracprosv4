@@ -10,7 +10,7 @@ const steps = [
     tag: "Discovery",
     tone: "bg-accent-mint",
     accentHex: "#FF521C",
-    person: "https://images.unsplash.com/photo-1573497019418-b400bb3ab074?auto=format&fit=crop&w=160&q=80",
+    person: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=160&q=80",
     person2: "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?auto=format&fit=crop&w=160&q=80",
     leadName: "Sarah · Strategist",
     duration: "2 weeks",
@@ -43,7 +43,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: "#faf9f7" }}>
+    <section className="relative overflow-hidden py-16 md:py-24" style={{ background: "#faf9f7" }}>
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-[1]"
@@ -68,13 +68,7 @@ export function HowItWorks() {
           <h2 className="mt-5 font-display text-4xl md:text-5xl lg:text-[60px] leading-[1.04] font-semibold tracking-[-0.028em] text-ink">
             Three Steps to a{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-[#FF521C]">Growth System</span>
-              <span
-                aria-hidden
-                className="absolute inset-x-0 bottom-1 h-3 -z-0 bg-accent-butter"
-                style={{ filter: "blur(0.5px)" }}
-              />
-            </span>
+              <span className="relative z-10 text-[#FF521C]">Growth System</span></span>
             <span className="block">That Runs Without You.</span>
           </h2>
         </Reveal>
