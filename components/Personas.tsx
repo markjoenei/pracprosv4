@@ -174,8 +174,97 @@ export function Personas() {
           </div>
         </div>
 
-        {/* Collage stage */}
-        <div className="relative mx-auto mt-14 h-[820px] w-full max-w-[1200px] md:h-[760px]">
+        {/* Mobile-only simplified layout */}
+        <div className="mt-14 grid gap-5 lg:hidden">
+          {/* Hero portrait */}
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-border bg-white shadow-card">
+            <Image
+              src={HERO_PORTRAIT}
+              alt="Happy dental patient"
+              fill
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition: "center top" }}
+              unoptimized
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)",
+              }}
+            />
+            <div className="absolute inset-x-4 bottom-4 flex items-end justify-between">
+              <div>
+                <div className="text-[10.5px] font-semibold uppercase tracking-[0.16em] text-white/80">
+                  Just rated
+                </div>
+                <div className="mt-1 inline-flex items-center gap-1.5 text-white">
+                  <Stars rating={5} size={14} />
+                  <span className="font-display text-[15px] font-semibold tracking-tight">5.0</span>
+                </div>
+              </div>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-wider text-ink shadow-card">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-500 animate-pulse" />
+                Verified
+              </span>
+            </div>
+          </div>
+
+          {/* Aggregate rating card */}
+          <div className="rounded-2xl border border-border bg-white p-5 shadow-card">
+            <div className="flex items-center gap-4">
+              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white shadow-card">
+                <GoogleMark />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-baseline gap-2">
+                  <span className="font-display text-[30px] font-semibold leading-none tracking-[-0.02em] text-ink">
+                    4.9
+                  </span>
+                  <Stars rating={4.9} size={16} />
+                </div>
+                <div className="mt-1 text-[12px] text-muted">
+                  <span className="font-semibold text-ink">1,247 reviews</span> ·{" "}
+                  <span className="font-semibold text-brand-600">+38 this week</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Review cards stack — first 4 reviews */}
+          {reviews.slice(0, 4).map((r) => (
+            <div
+              key={r.id}
+              className="rounded-2xl border border-border bg-white p-4 shadow-card"
+            >
+              <div className="flex items-center gap-3">
+                <span
+                  className={`grid h-10 w-10 shrink-0 place-items-center rounded-full text-[12px] font-bold text-white ${r.avatarBg}`}
+                >
+                  {r.initials}
+                </span>
+                <div className="leading-tight">
+                  <div className="text-[13px] font-semibold text-ink">{r.name}</div>
+                  <div className="mt-0.5 flex items-center gap-2 text-[10.5px] text-muted">
+                    <Stars rating={r.rating} size={11} />
+                    <span>{r.daysAgo}</span>
+                  </div>
+                </div>
+                <span className={`ml-auto rounded-full px-2 py-0.5 text-[10px] font-semibold text-ink ${r.sourceColor}`}>
+                  {r.source}
+                </span>
+              </div>
+              <p className="mt-3 text-[13.5px] leading-snug text-ink-soft">
+                &ldquo;{r.body}&rdquo;
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Collage stage — desktop only */}
+        <div className="relative mx-auto mt-14 hidden h-[820px] w-full max-w-[1200px] lg:block md:h-[760px]">
           {/* Decorative mini grids — corners */}
           <DecorGrid className="absolute left-[4%] top-[10%]" />
           <DecorGrid className="absolute right-[4%] top-[10%]" />

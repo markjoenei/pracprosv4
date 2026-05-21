@@ -43,9 +43,9 @@ export function Dashboard() {
         }}
       />
 
-      <div className="container-page relative grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+      <div className="container-page relative grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         {/* Text */}
-        <Reveal className="max-w-2xl">
+        <Reveal className="max-w-2xl lg:order-2">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 text-[12px] font-medium uppercase tracking-[0.14em] text-ink-soft backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#FF521C" }} aria-hidden />
             Centralized dashboard
@@ -103,7 +103,7 @@ export function Dashboard() {
         </Reveal>
 
         {/* Visual: dashboard mockup — bigger + animated */}
-        <Reveal delay={120} className="relative mx-auto w-full max-w-[820px]">
+        <Reveal delay={120} className="relative mx-auto w-full max-w-[820px] lg:order-1">
           <div className="relative">
             <div
               aria-hidden
